@@ -1,0 +1,126 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow text-center">
+                <div class="card-header text-center">
+                    <h5>Please fill this form for the Registration</h5>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+                        <div class="mb-3 mx-auto">
+                            <label class="form-label"><b>USERNAME</b></label>
+                            <input type="text" formControlName="username" class="form-control input-small mx-auto"
+                                placeholder="Enter your username">
+                            <div *ngIf="registrationForm.controls['username'].invalid && registrationForm.controls['username'].touched"
+                                class="alert alert-danger alert-custom mt-2 mx-auto">
+                                Username Length Must Be 5-10
+                            </div>
+                        </div>
+                        <div class="mb-3 mx-auto">
+                            <label class="form-label"><b>EMAIL</b></label>
+                            <input type="email" formControlName="email" class="form-control input-small mx-auto"
+                                placeholder="Enter your email">
+                            <div *ngIf="registrationForm.controls['email'].invalid && registrationForm.controls['email'].touched"
+                                class="alert alert-danger alert-custom mt-2 mx-auto">
+                                Valid email is required
+                            </div>
+                        </div>
+                        <div class="mb-3 mx-auto">
+                            <label class="form-label"><b>PASSWORD</b></label>
+                            <input type="password" formControlName="password" class="form-control input-small mx-auto"
+                                placeholder="Enter password">
+                            <div *ngIf="registrationForm.controls['password'].invalid && registrationForm.controls['password'].touched"
+                                class="alert alert-danger alert-custom mt-2 mx-auto">
+                                Password is required
+                            </div>
+                        </div>
+                        <div class="mb-3 mx-auto">
+                            <label class="form-label"><b>Repeat Password</b></label>
+                            <input type="password" formControlName="passwordRepeat"
+                                class="form-control input-small mx-auto" placeholder="Repeat your password">
+                            <div *ngIf="registrationForm.controls['passwordRepeat'].invalid && registrationForm.controls['passwordRepeat'].touched"
+                                class="alert alert-danger alert-custom mt-2 mx-auto">
+                                Passwords must match
+                            </div>
+                        </div>
+                        <div class="mb-3 mx-auto">
+                            <label class="form-label"><b>DOB</b></label>
+                            <input type="date" formControlName="dob" class="form-control input-small mx-auto">
+                            <div *ngIf="registrationForm.controls['dob'].invalid && registrationForm.controls['dob'].touched"
+                                class="alert alert-danger alert-custom mt-2 mx-auto">
+                                Date of birth is required
+                            </div>
+                        </div>
+                        <div class="mb-3 mx-auto">
+                            <label class="form-label"><b>GENDER</b></label><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" formControlName="gender" value="male">
+                                <label class="form-check-label">Male</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" formControlName="gender" value="female">
+                                <label class="form-check-label">Female</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" formControlName="gender" value="others">
+                                <label class="form-check-label">Others</label>
+                            </div>
+                        </div>
+
+                               
+                        <div class="mb-3 mx-auto">
+                                          <label class="form-label"><b>LANGUAGES KNOWN</b></label><br>
+                                          <div formGroupName="languagesKnown" class="mx-auto">
+                                                <div class="form-check form-check-inline">
+                                                      <input type="checkbox" formControlName="english"
+                                        class="form-check-input">
+                                                      <label class="form-check-label">English</label>
+                                                    </div>
+                                                <div class="form-check form-check-inline">
+                                                      <input type="checkbox" formControlName="tamil"
+                                        class="form-check-input">
+                                                      <label class="form-check-label">Tamil</label>
+                                                    </div>
+                                                <div class="form-check form-check-inline">
+                                                      <input type="checkbox" formControlName="hindi"
+                                        class="form-check-input">
+                                                      <label class="form-check-label">Hindi</label>
+                                                    </div>
+                                                <div class="form-check form-check-inline">
+                                                      <input type="checkbox" formControlName="telugu"
+                                        class="form-check-input">
+                                                      <label class="form-check-label">Telugu</label>
+                                                    </div>
+                                              </div>
+                                        </div>
+                                    <!-- Other form fields -->
+
+
+                        <div class="mb-3 mx-auto">
+                            <label class="form-label"><b>CONTACT NUMBER</b></label>
+                            <input type="text" formControlName="contactNumber" class="form-control input-small mx-auto"
+                                placeholder="Phone number">
+                            <div *ngIf="registrationForm.controls['contactNumber'].invalid && registrationForm.controls['contactNumber'].touched"
+                                class="alert alert-danger alert-custom mt-2 mx-auto">
+                                Contact number is required
+                            </div>
+                        </div>
+                        <div class="mb-3 mx-auto">
+                            <label class="form-label"><b>Qualification</b></label>
+                            <select class="form-select input-small mx-auto" formControlName="qualification">
+                                <option>MTech</option>
+                                <option>BTech</option>
+                                <option selected>Degree</option>
+                            </select>
+                        </div>
+                        <div class="text-center">
+                            <input type="submit" class="btn btn-success" value="Register"
+                                [disabled]="registrationForm.invalid">
+                            <input type="reset" class="btn btn-secondary" value="Reset" (click)="onReset()">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

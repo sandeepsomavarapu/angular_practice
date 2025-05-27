@@ -1,0 +1,23 @@
+<body class="bg-light">
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="col-md-4 bg-white p-4 rounded shadow">
+            <h2 class="text-center text-primary">Login</h2>
+            <p class="text-center text-muted">Please enter your email and password</p>
+            <form #loginForm="ngForm" (ngSubmit)="validate(loginForm)">
+                <div class="mb-3">
+                    <label for="loginEmail" class="form-label"><b>Email</b></label>
+                    <input type="email" ngModel name="loginEmail" class="form-control" placeholder="Enter Email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="loginPassword" class="form-label"><b>Password</b></label>
+                    <input type="password" ngModel name="loginPassword" class="form-control" placeholder="Enter Password" required>
+                </div>
+                <div class="text-center">
+                    <button type="submit"  class="btn btn-primary w-100">Login</button>
+                </div>
+                <p id="loginStatus" class="text-center mt-3"></p>
+            </form>
+        </div>
+    </div>
+
+ 

@@ -1,0 +1,53 @@
+<div class="container mt-3">
+<button type="button" class="btn btn-outline btn-success" routerLink="addemp">Add More Employees</button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>EMPID</th>
+        <th>EMPNAME</th>
+        <th>EMPSAL</th>
+        <th>EMPDESG</th>
+        <th>DOJ</th>
+        <th>ACTION</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{employee.eid}}</td>
+        <td>{{employee.ename | uppercase}}</td>
+        <td>{{employee.esal | currency:'INR'}}</td>
+        <td>{{employee.edesg}}</td>
+        <td>{{employee.edoj | date:'dd/MM/yyyy' }}</td>
+        <td>
+          <i class="fa-solid fa-trash text-danger" (click)="delete(employee)"></i>
+          <i class="fa-solid fa-pen text-warning" (click)="edit(employee)"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="selectedEmployee">
+    <h3>Edit Employee {{selectedEmployee.ename}}</h3>
+    <form (ngSubmit)="updateEmployee()">
+      <div class="form-group">
+        <label for="ename">Name:</label>
+        <input type="text" id="ename" [(ngModel)]="selectedEmployee.ename" name="ename" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="esal">Salary:</label>
+        <input type="number" id="esal" [(ngModel)]="selectedEmployee.esal" name="esal" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="edesg">Designation:</label>
+        <input type="text" id="edesg" [(ngModel)]="selectedEmployee.edesg" name="edesg" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="edoj">Date of Joining:</label>
+        <input type="date" id="edoj" [(ngModel)]="selectedEmployee.edoj" name="edoj" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+  </div>
+</div>
+<router-outlet></router-outlet>
+
