@@ -1,0 +1,35 @@
+<div class="container">
+    <button type="button" class="btn btn-success" routerLink="addUser">Add More Users</button>
+    <table class="table table-striped" *ngIf="users && !error && users.length > 0  ">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>User NAME</th>
+                <th>Email</th>
+                <th>DELETE USER</th>
+                <th>EDIT USER</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users" style="text-align: center;">
+                <td> {{user.id}} </td>
+                <td> {{user.name}} </td>
+                <td>{{user.email}}</td>
+                <td>
+                    <i class="fas fa-trash" (click)=delete(user)></i>
+                </td>
+                <td>
+                    <i class="fas fa-edit" (click)=update(user)></i>
+                </td>
+                <td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="error">
+        <h4 class="alert alert-danger"> {{error}}</h4>
+    </div>
+
+
+</div>
+<div>
+    <router-outlet></router-outlet>

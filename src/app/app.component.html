@@ -13,6 +13,11 @@
           <a class="nav-link active" routerLink="/employees">EMPLOYEES</a>
         </li>
       }
+      @if(!isLoggedIn){
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/users">USERS</a>
+        </li>
+      }
         @if(!isLoggedIn){
         <li class="nav-item">
           <a class="nav-link active" (click)="logout()">LOGOUT</a>

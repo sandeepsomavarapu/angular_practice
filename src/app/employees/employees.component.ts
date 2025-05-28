@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { CommonService, Employee } from '../common.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-employees',
@@ -14,10 +15,12 @@ export class EmployeesComponent {
 
   orgName = "cognizant";
   employees: Employee[];
+
   selectedEmployee: Employee | null = null;
 
-  constructor(service:CommonService) {
+  constructor(service:CommonService,userService:UserService) {
     this.employees=service.getAllEmployees();
+    userService.getAllUsers().subscribe(response=>console.log(response))
   }
 
   delete(emp: Employee) {
