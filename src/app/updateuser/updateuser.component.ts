@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { User, UserService } from '../user.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Employee } from '../common.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-updateuser',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './updateuser.component.html',
   styleUrl: './updateuser.component.css'
 })
-export class UpdateuserComponent {
+export class UpdateuserComponent  {
   obj1: any;
   users: User[];
   message: string;
@@ -23,4 +24,8 @@ export class UpdateuserComponent {
       this.router.navigate(['/users'])
     });
   }
+
+
 }
+
+

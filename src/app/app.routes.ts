@@ -6,6 +6,8 @@ import { AddempComponent } from './employees/addemp/addemp.component';
 import { ListusersComponent } from './listusers/listusers.component';
 import { UpdateuserComponent } from './updateuser/updateuser.component';
 import { AdduserComponent } from './adduser/adduser.component';
+import { ParentComponent } from './parent/parent.component';
+import { ChildComponent } from './child/child.component';
 
 export const routes: Routes = [
     { path: "", component: LoginComponent },
@@ -15,5 +17,8 @@ export const routes: Routes = [
     { path: "employees/addemp", component: AddempComponent },
     { path: "users", component: ListusersComponent },
     { path: "updateUser", component: UpdateuserComponent },
-    { path: "users/addUser", component: AdduserComponent }
+    { path: "users/addUser", component: AdduserComponent },
+    { path: "parent", component: ParentComponent },
+    { path: "child", component: ChildComponent },
+
 ];

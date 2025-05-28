@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   updateUser: User;
-  path = "http://localhost:3000/users"
+  path = "http://localhost:8080/users"
   constructor(private client: HttpClient) {
 
   }
@@ -15,11 +15,14 @@ export class UserService {
     console.log("ins service get Users");//headers
     return this.client.get<User>(this.path);
   }
-  public addUser(addUser: User) {
-    console.log("ins service add");
-    console.log(addUser);
-    return this.client.post(this.path, addUser);
-  }
+ 
+    public addUser(addUser: User): Observable<string> {
+        console.log("Inside service add");
+        console.log(addUser);
+        return this.client.post(this.path, addUser, { responseType: 'text' });
+      }
+    
+
   public update(updateUser: User) {
     this.updateUser = updateUser;
   }
@@ -28,12 +31,11 @@ export class UserService {
   }
   public onUpdate(updatedUser: User) {
     console.log("ins service update");
-
-    return this.client.put("http://localhost:3000/users/" + updatedUser.id, updatedUser);
+    return this.client.put("http://localhost:8080/users", updatedUser);
   }
   deleteUser(id: number) {
     console.log("ins service delete");
-    return this.client.delete("http://localhost:3000/users/" + id);
+    return this.client.delete("http://localhost:8080/users/" + id,{ responseType: 'text' });
   }
 
 

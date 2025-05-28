@@ -30,7 +30,7 @@ export class ListusersComponent {
   }
   update(updateUser: User) {
     this.myservice.update(updateUser);
-    this.router.navigate(['/updateUser']); //updating the employee
+    this.router.navigate(['/updateUser',{ state: { user: updateUser } }]); //updating the employee
   }
   delete(deleteUser: User): any {
     var selction = confirm("Are you sure !!")
@@ -38,9 +38,11 @@ export class ListusersComponent {
       this.users.splice(this.users.indexOf(deleteUser), 1);
       this.myservice.deleteUser(deleteUser.id).subscribe(data => {
         alert(data);
+          //window.location.reload();
+        this.router.navigate(['/users']);
       });
     }
-    this.router.navigate(['/users']);
+    
   }
 
 }
